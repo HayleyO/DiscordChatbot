@@ -1,5 +1,5 @@
 import discord
-
+from chatbot_guts import generate_response
 BOTTOKEN = 'Get your own bot token :p'
 
 client = discord.Client()
@@ -17,5 +17,7 @@ async def on_message(message):
     if(message.content == "~Clear"):
         async for message in message.channel.history(limit=200):
             await message.delete()
+    else:
+        generate_response(message.content)
 
 client.run(BOTTOKEN)
